@@ -1,0 +1,1 @@
+To run server: node --watch server.js
