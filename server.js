@@ -6,11 +6,11 @@ const port = 1660;
 
 app.use(cors());
 
-app.get("/duas", async(req, res) => {
-    const query = req.query.cat || 1;
-    const subcategories = await db.getAllSubcategory(query);
+app.get("/duas/:catId", async(req, res) => {
+    const categoryId = req.params.catId || 1;
+    const subcategories = await db.getAllSubcategory(categoryId);
     const categories = await db.getAllCategory();
-    const duas = await db.getCategoryWiseDua(query);
+    const duas = await db.getCategoryWiseDua(categoryId);
     res.status(200).json({categories, subcategories, duas});
 })
 
